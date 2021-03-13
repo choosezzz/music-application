@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 解决冷启动白色过渡动画 -->
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/main_color</item>
+        <item name="colorPrimaryDark">@color/main_color</item>
+        <item name="colorAccent">@color/main_color</item>
+    </style>
+
+    <style name="AppTheme.Transparent">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!--分割线样式-->
+    <style name="SplitLine">
+        <item name="android:layout_height">@dimen/split_line_height</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/split_line_color</item>
+        <item name="android:layout_margin">@dimen/margin_size</item>
+    </style>
+
+    <!--点击提交按钮-->
+    <style name="CommitBtn">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/commit_btn_height</item>
+        <item name="android:background">@drawable/btn_commit_selector</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/title_size</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginLeft">@dimen/margin_size</item>
+        <item name="android:layout_marginRight">@dimen/margin_size</item>
+    </style>
+</resources>

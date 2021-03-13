@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_size">16dp</dimen>
+    <dimen name="nav_bar_height">56dp</dimen>
+    <dimen name="title_size">22sp</dimen>
+    <dimen name="input_size">18sp</dimen>
+    <dimen name="input_view_height">44dp</dimen>
+    <dimen name="commit_btn_height">44dp</dimen>
+    <dimen name="split_line_height">1dp</dimen>
+    <dimen name="info_size">14sp</dimen>
+    <dimen name="radius">5dp</dimen>
+</resources>
