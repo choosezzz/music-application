@@ -21,28 +21,34 @@
     <!--引入自定义view-->
     <com.example.musicapplication.views.InputView
         android:layout_width="match_parent"
+        android:id="@+id/input_phone"
         android:layout_height="@dimen/input_view_height"
         android:layout_marginTop="@dimen/margin_size"
         app:input_icon="@mipmap/input_phone"
         app:input_hint="@string/user_phone"
         app:is_password="false"
         />
-    <View style="@style/SplitLine"/>
+    <View
+        style="@style/SplitLine"/>
+
     <com.example.musicapplication.views.InputView
         android:layout_width="match_parent"
         android:layout_height="@dimen/input_view_height"
         android:layout_marginTop="@dimen/margin_size"
+        android:id="@+id/input_password"
         app:input_icon="@mipmap/input_password"
         app:input_hint="@string/user_password"
         app:is_password="true"
         />
-    <View style="@style/SplitLine"/>
+    <View
+        style="@style/SplitLine"/>
 
     <!--立即注册-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/main_color"
+
         android:textSize="@dimen/info_size"
         android:text="@string/register_now"
         android:layout_gravity="center_horizontal"
@@ -53,5 +59,6 @@
         style="@style/CommitBtn"
         android:text="@string/login"
         android:layout_marginTop="@dimen/margin_size"
+        android:onClick="login"
         />
 </LinearLayout>

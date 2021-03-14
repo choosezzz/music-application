@@ -101,7 +101,7 @@ public class InputView extends FrameLayout {
      * 获取输入内容
      * @return
      */
-    private String getInputText() {
+    public String getInputText() {
         return editText.getText().toString().trim();
     }
 }
