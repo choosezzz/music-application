@@ -26,7 +26,7 @@ public class RegisterActivity extends BaseActivity {
      * 初始化登录页面View
      */
     private void initView() {
-        initNavBar(false, "注册", false);
+        initNavBar(true, "注册", false);
         phoneView = fd(R.id.input_phone);
         pwdView = fd(R.id.input_password);
         pwdViewAgain = fd(R.id.input_password_again);

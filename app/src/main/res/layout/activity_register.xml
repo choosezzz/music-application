@@ -11,8 +11,8 @@
     <include layout="@layout/nav_bar"/>
 
     <ImageView
-        android:layout_width="255dp"
-        android:layout_height="176dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/margin_size"
         android:src="@mipmap/ic_main" />
@@ -23,7 +23,7 @@
         android:layout_height="@dimen/input_view_height"
         android:layout_marginTop="@dimen/margin_size"
         app:input_icon="@mipmap/input_phone"
-        app:input_hint="@string/user_phone"
+        app:input_hint="@string/please_input_phone"
         app:is_password="false"
         />
     <View
@@ -32,10 +32,9 @@
     <com.example.musicapplication.views.InputView
         android:layout_width="match_parent"
         android:layout_height="@dimen/input_view_height"
-        android:layout_marginTop="@dimen/margin_size"
         android:id="@+id/input_password"
         app:input_icon="@mipmap/input_password"
-        app:input_hint="@string/user_password"
+        app:input_hint="@string/please_input_password"
         app:is_password="true"
         />
     <View
@@ -44,30 +43,18 @@
     <com.example.musicapplication.views.InputView
         android:layout_width="match_parent"
         android:layout_height="@dimen/input_view_height"
-        android:layout_marginTop="@dimen/margin_size"
         android:id="@+id/input_password_again"
         app:input_icon="@mipmap/input_password"
         app:input_hint="@string/input_password_again"
         app:is_password="true"
         />
+
     <View
         style="@style/SplitLine"/>
-    <!--去登陆-->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/main_color"
 
-        android:textSize="@dimen/info_size"
-        android:text="@string/login_now"
-        android:layout_gravity="center_horizontal"
-        android:padding="@dimen/margin_size"
-        android:onClick="toLogin"
-        />
     <Button
         style="@style/CommitBtn"
         android:text="@string/register"
-        android:layout_marginTop="@dimen/margin_size"
         android:onClick="register"
         />
 

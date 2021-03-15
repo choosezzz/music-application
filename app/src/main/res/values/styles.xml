@@ -33,4 +33,16 @@
         <item name="android:layout_marginLeft">@dimen/margin_size</item>
         <item name="android:layout_marginRight">@dimen/margin_size</item>
     </style>
+
+    <!--Activity切换的动画效果-->
+    <style name="AnimationActivity" parent="@android:style/Animation.Activity">
+        <!--activity打开时，进入的activity动画-->
+        <item name="android:activityOpenEnterAnimation">@anim/open_enter</item>
+        <!--Activity打开时，退出的activity动画-->
+        <item name="android:activityOpenExitAnimation">@anim/open_exit</item>
+        <!--Activity关闭时，进入的activity动画-->
+        <item name="android:activityCloseEnterAnimation">@anim/close_enter</item>
+        <!--Activity关闭时，退出的activity动画-->
+        <item name="android:activityCloseExitAnimation">@anim/close_exit</item>
+    </style>
 </resources>

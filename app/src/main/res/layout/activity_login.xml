@@ -34,7 +34,6 @@
     <com.example.musicapplication.views.InputView
         android:layout_width="match_parent"
         android:layout_height="@dimen/input_view_height"
-        android:layout_marginTop="@dimen/margin_size"
         android:id="@+id/input_password"
         app:input_icon="@mipmap/input_password"
         app:input_hint="@string/user_password"
@@ -58,7 +57,6 @@
     <Button
         style="@style/CommitBtn"
         android:text="@string/login"
-        android:layout_marginTop="@dimen/margin_size"
         android:onClick="login"
         />
 </LinearLayout>

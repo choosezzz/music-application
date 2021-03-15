@@ -54,5 +54,6 @@ public class BaseActivity extends Activity {
         titleView.setText(title);
         backView.setVisibility(showBack ? View.VISIBLE : View.INVISIBLE);
         userView.setVisibility(showUser ? View.VISIBLE : View.INVISIBLE);
+        backView.setOnClickListener(v -> onBackPressed());
     }
 }

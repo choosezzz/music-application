@@ -32,7 +32,7 @@ public class LoginActivity extends BaseActivity {
      * 跳转注册页面
      */
     public void toRegister(View view) {
-        toActivity(RegisterActivity.class, true);
+        toActivity(RegisterActivity.class, false);
     }
 
     /**

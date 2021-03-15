@@ -23,4 +23,10 @@
 1. 使用selector可以设置不同状态下的样式
 2. 使用shape自定义形状
 
+### 动画文件animation res/anim/
+1. open enter
+2. open exit
+3. close enter
+4. close exit
+
 
