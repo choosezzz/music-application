@@ -41,9 +41,9 @@ public class LoginActivity extends BaseActivity {
      */
     public void login(View view) {
 
-        if (!UserUtil.validateLogin(phoneView.getInputText(), pwdView.getInputText())) {
-            return;
-        }
+//        if (!UserUtil.validateLogin(phoneView.getInputText(), pwdView.getInputText())) {
+//            return;
+//        }
         toActivity(MainActivity.class, true);
     }
 }

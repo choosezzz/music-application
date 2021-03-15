@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.UserCenterActivity">
+
+    <include layout="@layout/nav_bar"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textSize="@dimen/title_size"
+        android:textStyle="bold"
+        android:text="@string/center_user_name"
+        android:layout_marginTop="@dimen/margin_size"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_height"
+        android:textSize="@dimen/info_size"
+        android:text="@string/change_password"
+        android:textColor="@color/main_color"
+        android:layout_marginTop="@dimen/margin_size"
+        android:paddingLeft="@dimen/margin_size"
+        android:gravity="center_vertical"
+        android:background="@drawable/item_commit_selector"
+        android:onClick="changePassword"
+        />
+
+    <Button
+        style="@style/CommitBtn"
+        android:text="@string/logout"
+        android:layout_marginTop="@dimen/margin_size"
+        android:onClick="logout"
+        />
+</LinearLayout>

@@ -1,10 +1,12 @@
 package com.example.musicapplication.utils;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
 
 import com.blankj.utilcode.util.RegexUtils;
 import com.blankj.utilcode.util.ToastUtils;
+import com.example.musicapplication.activities.LoginActivity;
 
 /**
  * @author choosezzz
@@ -41,5 +43,8 @@ public class UserUtil {
             return false;
         }
         return true;
+    }
+
+    public static void logout(Context context) {
     }
 }

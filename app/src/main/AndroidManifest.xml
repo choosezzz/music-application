@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MusicApplication">
-        <activity android:name=".activities.RegisterActivity"></activity>
+        <activity android:name=".activities.UserCenterActivity"></activity>
+        <activity android:name=".activities.RegisterActivity" />
         <activity android:name=".activities.LoginActivity" />
         <activity android:name=".activities.MainActivity" /> <!-- 启动activity -->
         <activity

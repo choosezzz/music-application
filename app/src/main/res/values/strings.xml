@@ -10,4 +10,7 @@
     <string name="register">注  册</string>
     <string name="please_input_phone">请输入手机号</string>
     <string name="please_input_password">请输入密码</string>
+    <string name="center_user_name">用户名：</string>
+    <string name="change_password">修改密码</string>
+    <string name="logout">退出登录</string>
 </resources>

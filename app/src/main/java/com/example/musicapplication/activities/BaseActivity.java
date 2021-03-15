@@ -55,5 +55,6 @@ public class BaseActivity extends Activity {
         backView.setVisibility(showBack ? View.VISIBLE : View.INVISIBLE);
         userView.setVisibility(showUser ? View.VISIBLE : View.INVISIBLE);
         backView.setOnClickListener(v -> onBackPressed());
+        userView.setOnClickListener(v -> toActivity(UserCenterActivity.class, false));
     }
 }

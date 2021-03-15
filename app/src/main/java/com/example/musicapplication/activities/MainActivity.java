@@ -14,6 +14,6 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initView() {
-        initNavBar(true, "我的音乐", true);
+        initNavBar(false, "我的音乐", true);
     }
 }
