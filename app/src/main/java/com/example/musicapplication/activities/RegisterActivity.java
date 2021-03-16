@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.musicapplication.R;
+import com.example.musicapplication.constants.Constant;
 import com.example.musicapplication.utils.UserUtil;
 import com.example.musicapplication.views.InputView;
 
@@ -26,7 +27,7 @@ public class RegisterActivity extends BaseActivity {
      * 初始化登录页面View
      */
     private void initView() {
-        initNavBar(true, "注册", false);
+        initNavBar(true, Constant.REGISTER, false);
         phoneView = fd(R.id.input_phone);
         pwdView = fd(R.id.input_password);
         pwdViewAgain = fd(R.id.input_password_again);

@@ -29,4 +29,10 @@
 3. close enter
 4. close exit
 
+### 任务和返回栈 task栈
+任务是指执行特定作业时与用户交互的一系列activity，这些activity按照打开的顺序排列在堆栈（返回栈）中
+1. Intent.FLAG_ACTIVITY_CLEAR_TASK：清除当前task栈的activity
+2. Intent.FLAG_ACTIVITY_NEW_TASK：创建一个新的Task栈
+3. 会造成过渡动画问题，使用((Activity) context).overridePendingTransition(R.anim.open_enter, R.anim.open_exit);重写动画效果
+4. 必须在startActivity调用之后使用
 

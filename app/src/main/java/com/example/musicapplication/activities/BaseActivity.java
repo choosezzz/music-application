@@ -15,7 +15,7 @@ import com.example.musicapplication.R;
  * @date 3/13/21 2:57 PM
  * 全局Activity的父类
  */
-public class BaseActivity extends Activity {
+public abstract class BaseActivity extends Activity {
 
     private ImageView backView;
     private ImageView userView;

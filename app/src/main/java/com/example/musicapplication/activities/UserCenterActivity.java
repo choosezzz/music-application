@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.musicapplication.R;
+import com.example.musicapplication.constants.Constant;
 import com.example.musicapplication.utils.UserUtil;
 
 public class UserCenterActivity extends BaseActivity {
@@ -12,10 +13,11 @@ public class UserCenterActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_center);
+        initView();
     }
 
     private void initView() {
-        initNavBar(true, "个人中心", false);
+        initNavBar(true, Constant.USER_CENTER, false);
     }
 
     /**
@@ -23,7 +25,7 @@ public class UserCenterActivity extends BaseActivity {
      * @param view
      */
     public void changePassword(View view) {
-
+        toActivity(ChangePasswordActivity.class, false);
     }
 
     /**
@@ -32,6 +34,5 @@ public class UserCenterActivity extends BaseActivity {
      */
     public void logout(View view) {
         UserUtil.logout(this);
-        toActivity(LoginActivity.class, true);
     }
 }

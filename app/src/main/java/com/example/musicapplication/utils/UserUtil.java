@@ -1,11 +1,13 @@
 package com.example.musicapplication.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 
 import com.blankj.utilcode.util.RegexUtils;
 import com.blankj.utilcode.util.ToastUtils;
+import com.example.musicapplication.R;
 import com.example.musicapplication.activities.LoginActivity;
 
 /**
@@ -46,5 +48,11 @@ public class UserUtil {
     }
 
     public static void logout(Context context) {
+
+        Intent intent = new Intent(context, LoginActivity.class);
+        //仅保留登录activity
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+        ((Activity) context).overridePendingTransition(R.anim.open_enter, R.anim.open_exit);
     }
 }

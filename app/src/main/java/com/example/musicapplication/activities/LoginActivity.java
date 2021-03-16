@@ -2,10 +2,9 @@ package com.example.musicapplication.activities;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 import com.example.musicapplication.R;
-import com.example.musicapplication.utils.UserUtil;
+import com.example.musicapplication.constants.Constant;
 import com.example.musicapplication.views.InputView;
 
 public class LoginActivity extends BaseActivity {
@@ -23,7 +22,7 @@ public class LoginActivity extends BaseActivity {
      * 初始化登录页面View
      */
     private void initView() {
-        initNavBar(false, "登录", false);
+        initNavBar(false, Constant.LOGIN, false);
         phoneView = fd(R.id.input_phone);
         pwdView = fd(R.id.input_password);
     }
