@@ -10,4 +10,7 @@
     <dimen name="split_line_height">1dp</dimen>
     <dimen name="info_size">14sp</dimen>
     <dimen name="radius">5dp</dimen>
+    <dimen name="tab_margin_size">4dp</dimen>
+    <dimen name="album_margin_size">4dp</dimen>
+    <dimen name="play_num_img_size">18dp</dimen>
 </resources>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@mipmap/img_2"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="right|center_vertical"
+            android:layout_margin="@dimen/album_margin_size">
+            <!--播放量-->
+            <ImageView
+                android:layout_width="@dimen/play_num_img_size"
+                android:layout_height="@dimen/play_num_img_size"
+                android:src="@mipmap/ic_play_num_black"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100w"
+                android:textStyle="bold"
+                android:textSize="@dimen/title_size"
+                android:textColor="@color/black"
+                android:layout_marginLeft="@dimen/album_margin_size"/>
+        </LinearLayout>
+    </FrameLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="歌单名称"
+        android:textStyle="bold"
+        android:textSize="@dimen/title_size"
+        android:padding="@dimen/album_margin_size"/>
+</LinearLayout>

@@ -11,4 +11,6 @@
     <color name="highlight_main_color">#C80F1F</color>
     <color name="split_line_color">#C3C3C3</color>
     <color name="item_highlight_color">#DEE1E6</color>
+    <color name="title_color">#333333</color>
+    <color name="info_color">#888888</color>
 </resources>
