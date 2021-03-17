@@ -9,7 +9,8 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <ImageView
+        <!--使用自定义的ImageView-->
+        <com.example.musicapplication.views.SquareImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scaleType="fitXY"
@@ -29,7 +30,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="100w"
-                android:textStyle="bold"
                 android:textSize="@dimen/title_size"
                 android:textColor="@color/black"
                 android:layout_marginLeft="@dimen/album_margin_size"/>
@@ -40,6 +40,7 @@
         android:layout_height="wrap_content"
         android:text="歌单名称"
         android:textStyle="bold"
+        android:textColor="@color/black"
         android:textSize="@dimen/title_size"
         android:padding="@dimen/album_margin_size"/>
 </LinearLayout>
