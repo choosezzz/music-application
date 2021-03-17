@@ -2,6 +2,7 @@ package com.example.musicapplication.activities;
 
 import android.os.Bundle;
 
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -43,12 +44,13 @@ public class MainActivity extends BaseActivity {
         gridView.addItemDecoration(new GridItemSpaceDecoration(getResources().getDimensionPixelSize(R.dimen.album_margin_size), gridView));
 
         //最热音乐列表
-        listAdapter = new MusicListAdapter(this, 8);
         listView = fd(R.id.rv_list);
+        listAdapter = new MusicListAdapter(this, 8, listView);
         //禁止RecyclerView滑动
         listView.setNestedScrollingEnabled(false);
         listView.setLayoutManager(new LinearLayoutManager(this));
         listView.setAdapter(listAdapter);
+        listView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
 
     }
 }
