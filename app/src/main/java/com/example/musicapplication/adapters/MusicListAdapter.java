@@ -2,7 +2,6 @@ package com.example.musicapplication.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -11,23 +10,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.musicapplication.R;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 
 /**
  * @author choosezzz
- * @date 3/16/21 11:14 PM
+ * @date 3/17/21 10:55 PM
  */
-@Getter
 @AllArgsConstructor
-public class MusicGridAdapter extends RecyclerView.Adapter<MyViewHolder> {
+public class MusicListAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
     private Context context;
-    private int itemCount;
+    private int line;
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.item_grid_music, parent, false));
+        return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.item_list_music, parent, false));
     }
 
     @Override
@@ -37,6 +34,6 @@ public class MusicGridAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
     @Override
     public int getItemCount() {
-        return itemCount;
+        return line;
     }
 }

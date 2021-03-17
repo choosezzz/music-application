@@ -13,4 +13,6 @@
     <dimen name="tab_margin_size">4dp</dimen>
     <dimen name="album_margin_size">4dp</dimen>
     <dimen name="play_num_img_size">18dp</dimen>
+    <dimen name="music_list_img_size">56dp</dimen>
+    <dimen name="music_play_img_size">36dp</dimen>
 </resources>
