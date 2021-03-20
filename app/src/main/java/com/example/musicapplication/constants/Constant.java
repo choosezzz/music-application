@@ -23,4 +23,5 @@ public interface Constant {
      */
     String SPACE_EN = "\u0020";
 
+    String ALBUM_LIST = "专辑列表";
 }

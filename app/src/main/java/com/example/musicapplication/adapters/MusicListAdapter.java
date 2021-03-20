@@ -58,6 +58,8 @@ public class MusicListAdapter extends RecyclerView.Adapter<MusicListAdapter.View
     }
 
     /**
+     *
+     * 只有RecyclerView和ScrollView重叠使用时需要计算
      * 设置RecyclerView的高度
      * 1、获取ItemView的高度
      * 2、获取ItemView的行数
