@@ -4,18 +4,20 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.musicapplication.R;
 
 /**
  * @author choosezzz
  * @date 3/17/21 10:55 PM
  */
-public class MusicListAdapter extends RecyclerView.Adapter<MyViewHolder> {
+public class MusicListAdapter extends RecyclerView.Adapter<MusicListAdapter.ViewHolder> {
 
     private Context context;
     private int line;
@@ -38,14 +40,16 @@ public class MusicListAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         itemView = LayoutInflater.from(context).inflate(R.layout.item_list_music, parent, false);
-        return new MyViewHolder(itemView);
+        return new ViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         setRecyclerViewHeight();
+        Glide.with(context).load("https://t7.baidu.com/it/u=2621658848,3952322712&fm=193&f=GIF")
+                .into(holder.imageView);
     }
 
     @Override
@@ -71,5 +75,16 @@ public class MusicListAdapter extends RecyclerView.Adapter<MyViewHolder> {
         rvParams.height = getItemCount() * itemViewParams.height;
         recyclerView.setLayoutParams(rvParams);
 
+    }
+    
+    class ViewHolder extends RecyclerView.ViewHolder{
+
+        //列表页缩略图
+        private ImageView imageView;
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            imageView = itemView.findViewById(R.id.music_list_icon);
+        }
     }
 }

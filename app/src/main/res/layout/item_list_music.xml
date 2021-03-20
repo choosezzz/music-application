@@ -11,6 +11,7 @@
     <ImageView
         android:layout_width="@dimen/music_list_img_size"
         android:layout_height="@dimen/music_list_img_size"
+        android:id="@+id/music_list_icon"
         android:src="@mipmap/img_3"
         />
 
