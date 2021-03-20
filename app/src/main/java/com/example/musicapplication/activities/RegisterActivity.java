@@ -15,7 +15,7 @@ public class RegisterActivity extends BaseActivity {
 
     private InputView phoneView;
     private InputView pwdView;
-    private InputView pwdViewAgain;
+    private InputView confirmPwdView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,14 +30,7 @@ public class RegisterActivity extends BaseActivity {
         initNavBar(true, Constant.REGISTER, false);
         phoneView = fd(R.id.input_phone);
         pwdView = fd(R.id.input_password);
-        pwdViewAgain = fd(R.id.input_password_again);
-    }
-
-    /**
-     * 跳转注册页面
-     */
-    public void toLogin(View view) {
-        toActivity(LoginActivity.class, true);
+        confirmPwdView = fd(R.id.confirm_input_password);
     }
 
     /**
@@ -49,7 +42,7 @@ public class RegisterActivity extends BaseActivity {
 
         if (!UserUtil.validateRegister(phoneView.getInputText(),
                 pwdView.getInputText(),
-                pwdViewAgain.getInputText())) {
+                confirmPwdView.getInputText())) {
             return;
         }
         toActivity(MainActivity.class, true);
