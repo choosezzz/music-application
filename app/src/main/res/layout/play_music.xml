@@ -4,17 +4,19 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!--光盘-->
+    <!--唱片布局-->
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/disc_top_size">
+        android:layout_marginTop="@dimen/disc_top_size"
+        android:id="@+id/fl_play_music">
 
-        <!--光盘黑色圆圈-->
+        <!--黑色碟片-->
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/play_disc"/>
+            android:src="@mipmap/play_disc"
+            />
 
         <!--圆形图片-->
         <de.hdodenhof.circleimageview.CircleImageView
@@ -33,17 +35,19 @@
             android:src="@mipmap/ic_play_black"
             android:layout_gravity="center"
             android:visibility="gone"
+            android:id="@+id/iv_play"
             />
 
     </FrameLayout>
 
-    <!--指针-->
+    <!--唱针-->
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@mipmap/play_needle"
         android:layout_gravity="center_horizontal"
         android:layout_marginLeft="@dimen/needle_left_size"
+        android:id="@+id/iv_play_needle"
         />
 
 

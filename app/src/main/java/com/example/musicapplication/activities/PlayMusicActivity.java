@@ -39,6 +39,7 @@ public class PlayMusicActivity extends BaseActivity {
                 .into(bgImage);
         playMusicView = fd(R.id.play_music_view);
         playMusicView.setPlayIcon("https://t7.baidu.com/it/u=3203007717,1062852813&fm=193&f=GIF");
+        playMusicView.playMusic();
     }
 
     public void onBackClick(View view) {
