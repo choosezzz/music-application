@@ -30,7 +30,7 @@
             android:textColor="@color/title_color"
             android:textSize="@dimen/title_size"
             android:textStyle="bold"
-            android:text="天使的翅膀"/>
+            android:text="天堂"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

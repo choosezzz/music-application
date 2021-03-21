@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--光盘-->
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/disc_top_size">
+
+        <!--光盘黑色圆圈-->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/play_disc"/>
+
+        <!--圆形图片-->
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circle_icon"
+            android:layout_width="@dimen/play_circle_size"
+            android:layout_height="@dimen/play_circle_size"
+            android:layout_gravity="center"
+            app:civ_border_width="@dimen/circle_border"
+            android:src="@mipmap/img_4"
+            app:civ_border_color="@color/black"/>
+
+        <!--播放按钮-->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_play_black"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            />
+
+    </FrameLayout>
+
+    <!--指针-->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/play_needle"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="@dimen/needle_left_size"
+        />
+
+
+</FrameLayout>

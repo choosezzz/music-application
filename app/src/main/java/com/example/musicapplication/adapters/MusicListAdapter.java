@@ -1,6 +1,7 @@
 package com.example.musicapplication.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.musicapplication.R;
+import com.example.musicapplication.activities.PlayMusicActivity;
 
 /**
  * @author choosezzz
@@ -50,6 +52,11 @@ public class MusicListAdapter extends RecyclerView.Adapter<MusicListAdapter.View
         setRecyclerViewHeight();
         Glide.with(context).load("https://t7.baidu.com/it/u=2621658848,3952322712&fm=193&f=GIF")
                 .into(holder.imageView);
+        //音乐列表点击事件
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, PlayMusicActivity.class);
+            context.startActivity(intent);
+        });
     }
 
     @Override
@@ -83,7 +90,6 @@ public class MusicListAdapter extends RecyclerView.Adapter<MusicListAdapter.View
 
         //列表页缩略图
         private ImageView imageView;
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.music_list_icon);
