@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
 import com.example.musicapplication.R;
+import com.example.musicapplication.helpers.MediaPlayHelper;
 
 /**
  * @author choosezzz
@@ -56,6 +57,11 @@ public class PlayMusicView extends FrameLayout {
     private Animation stopNeedleAnim;
 
     private boolean isPlaying;
+    private MediaPlayHelper mediaPlayHelper;
+    /**
+     * 音乐地址
+     */
+    String musicPath;
 
     public PlayMusicView(@NonNull Context context) {
         super(context);
@@ -93,6 +99,8 @@ public class PlayMusicView extends FrameLayout {
         stopNeedleAnim = AnimationUtils.loadAnimation(context, R.anim.stop_needle_anim);
 
         addView(playView);
+        mediaPlayHelper = MediaPlayHelper.getInstance(context);
+
     }
 
     public void setPlayIcon(String src) {
@@ -103,11 +111,22 @@ public class PlayMusicView extends FrameLayout {
     /**
      * 播放音乐
      */
-    public void playMusic() {
+    public void playMusic(String path) {
         isPlaying = true;
+        musicPath = path;
         flPlayMusic.startAnimation(playTurntableAnim);
         ivPlayNeedle.startAnimation(playNeedleAnim);
         ivPlay.setVisibility(View.GONE);
+
+        String playPath = mediaPlayHelper.getPath();
+        if (path.equals(playPath)) {
+            mediaPlayHelper.start();
+            return;
+        }
+        mediaPlayHelper.setPath(path);
+        mediaPlayHelper.setMediaPlayerListener(v -> {
+            mediaPlayHelper.start();
+        });
     }
 
     /**
@@ -118,6 +137,7 @@ public class PlayMusicView extends FrameLayout {
         flPlayMusic.clearAnimation();
         ivPlayNeedle.startAnimation(stopNeedleAnim);
         ivPlay.setVisibility(View.VISIBLE);
+        mediaPlayHelper.pause();
     }
 
     /**
@@ -128,7 +148,7 @@ public class PlayMusicView extends FrameLayout {
         if (isPlaying) {
             stopMusic();
         }else {
-            playMusic();
+            playMusic(musicPath);
         }
     }
 
