@@ -36,3 +36,6 @@
 3. 会造成过渡动画问题，使用((Activity) context).overridePendingTransition(R.anim.open_enter, R.anim.open_exit);重写动画效果
 4. 必须在startActivity调用之后使用
 
+### android 9.0以上播放失败
+android:usesCleartextTraffic="true"
+

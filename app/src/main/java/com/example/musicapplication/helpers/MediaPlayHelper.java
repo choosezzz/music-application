@@ -58,7 +58,9 @@ public class MediaPlayHelper {
             mediaPlayer.prepareAsync();
 
             mediaPlayer.setOnPreparedListener(mediaPlayer -> {
-                mediaPlayerListener.onPrepared(mediaPlayer);
+                if (mediaPlayerListener != null) {
+                    mediaPlayerListener.onPrepared(mediaPlayer);
+                }
             });
 
         } catch (IOException e) {
