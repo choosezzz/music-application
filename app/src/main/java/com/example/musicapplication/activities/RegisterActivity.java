@@ -40,11 +40,11 @@ public class RegisterActivity extends BaseActivity {
      */
     public void register(View view) {
 
-        if (!UserUtil.validateRegister(phoneView.getInputText(),
+        boolean register = UserUtil.register(phoneView.getInputText(),
                 pwdView.getInputText(),
-                confirmPwdView.getInputText())) {
-            return;
+                confirmPwdView.getInputText());
+        if (register) {
+            toActivity(MainActivity.class, true);
         }
-        toActivity(MainActivity.class, true);
     }
 }

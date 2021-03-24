@@ -9,6 +9,8 @@ import com.blankj.utilcode.util.RegexUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.example.musicapplication.R;
 import com.example.musicapplication.activities.LoginActivity;
+import com.example.musicapplication.helpers.RealmHelper;
+import com.example.musicapplication.models.UserModel;
 
 /**
  * @author choosezzz
@@ -81,5 +83,29 @@ public class UserUtil {
             return false;
         }
         return true;
+    }
+
+    /**
+     * 注册接口
+     * @param phone
+     * @param password
+     * @return
+     */
+    public static boolean register(String phone, String password, String confirmPassword) {
+
+        if (validateRegister(phone, password, confirmPassword)) {
+            UserModel userModel = new UserModel();
+            userModel.setPassword(password);
+            userModel.setPhone(phone);
+            saveUser(userModel);
+            return true;
+        }
+        return false;
+    }
+
+    private static void saveUser(UserModel userModel) {
+        RealmHelper realmHelper = new RealmHelper();
+        realmHelper.saveUser(userModel);
+        realmHelper.close();
     }
 }

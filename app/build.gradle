@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    id 'realm-android'
 }
 
 android {
@@ -35,6 +36,9 @@ android {
     }
 }
 
+realm {
+    syncEnabled = true
+}
 dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
