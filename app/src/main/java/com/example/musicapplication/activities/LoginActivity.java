@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.example.musicapplication.R;
 import com.example.musicapplication.constants.Constant;
+import com.example.musicapplication.utils.UserUtil;
 import com.example.musicapplication.views.InputView;
 
 public class LoginActivity extends BaseActivity {
@@ -40,9 +41,10 @@ public class LoginActivity extends BaseActivity {
      */
     public void login(View view) {
 
-//        if (!UserUtil.validateLogin(phoneView.getInputText(), pwdView.getInputText())) {
-//            return;
-//        }
+        if (!UserUtil.validateLogin(this, phoneView.getInputText(), pwdView.getInputText())) {
+            return;
+        }
+        this.
         toActivity(MainActivity.class, true);
     }
 }

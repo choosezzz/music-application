@@ -1,12 +1,17 @@
 package com.example.musicapplication.activities;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.example.musicapplication.R;
 import com.example.musicapplication.constants.Constant;
 import com.example.musicapplication.utils.UserUtil;
 import com.example.musicapplication.views.InputView;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * 注册页面
@@ -44,7 +49,14 @@ public class RegisterActivity extends BaseActivity {
                 pwdView.getInputText(),
                 confirmPwdView.getInputText());
         if (register) {
-            toActivity(MainActivity.class, true);
+            Context context = this;
+            ToastUtils.showLong("注册成功，请登录");
+            new Timer().schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    UserUtil.logout(context);
+                }
+            }, 800);
         }
     }
 }

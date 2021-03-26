@@ -1,8 +1,11 @@
 package com.example.musicapplication.activities;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import com.blankj.utilcode.util.RegexUtils;
 import com.example.musicapplication.R;
+import com.example.musicapplication.utils.UserUtil;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -16,11 +19,17 @@ public class WelcomeActivity extends BaseActivity {
         init();
     }
     private void init() {
+
+        Context context = this;
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-//                toMain();
-                toLogin();
+                String userCache = UserUtil.getUserCache(context);
+                if (RegexUtils.isMobileExact(userCache)) {
+                    toMain();
+                }else {
+                    toLogin();
+                }
             }
         }, 1000);
     }

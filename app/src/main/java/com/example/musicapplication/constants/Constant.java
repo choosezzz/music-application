@@ -24,4 +24,7 @@ public interface Constant {
     String SPACE_EN = "\u0020";
 
     String ALBUM_LIST = "专辑列表";
+
+    String USER_PREFERENCE_TAG = "user_preference";
+    String LOGIN_PREFERENCE_KEY = "login_user";
 }

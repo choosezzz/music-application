@@ -37,7 +37,7 @@ public class ChangePasswordActivity extends BaseActivity {
     }
 
     public void changeNewPassword(View view) {
-        boolean success = UserUtil.changePassword(oldPwd.getInputText(),
+        boolean success = UserUtil.changePassword(this, oldPwd.getInputText(),
                 newPwd.getInputText(),
                 confirmPwd.getInputText());
 
