@@ -69,6 +69,10 @@ public class UserUtil {
             return false;
         }
 
+        if (oldPwd.equals(newPwd)) {
+            ToastUtils.showShort("新密码不能与原密码相同");
+            return false;
+        }
         if (TextUtils.isEmpty(newPwd)) {
             ToastUtils.showShort("请输入确认密码");
             return false;
@@ -79,9 +83,14 @@ public class UserUtil {
             return false;
         }
 
-        String phone = getUserPreferenceInfo(context);
-        deleteUserPreferenceInfo(context);
         RealmHelper realmHelper = RealmHelper.getRealmHelper();
+        String phone = getUserPreferenceInfo(context);
+        UserModel user = realmHelper.getUser(phone, oldPwd);
+        if (user == null) {
+            ToastUtils.showShort("原密码不正确");
+            return false;
+        }
+        deleteUserPreferenceInfo(context);
         realmHelper.updateUserPassword(phone, newPwd);
         realmHelper.close();
         return true;
