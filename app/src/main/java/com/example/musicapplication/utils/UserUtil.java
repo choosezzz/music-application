@@ -40,6 +40,7 @@ public class UserUtil {
             return false;
         }
         saveUserPreferenceInfo(context, phone);
+        instance.removeMusicSource();
         instance.setMusicSource(DataUtil.readFileFromAsset(context, Constant.MUSIC_SOURCE_FILE));
         instance.close();
         return true;

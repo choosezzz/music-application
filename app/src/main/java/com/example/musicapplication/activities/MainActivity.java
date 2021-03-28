@@ -58,7 +58,7 @@ public class MainActivity extends BaseActivity {
 
         //最热音乐列表
         listView = fd(R.id.rv_list);
-        listAdapter = new MusicListAdapter(this, 8, listView);
+        listAdapter = new MusicListAdapter(this, listView, musicSource.getHot());
         //禁止RecyclerView滑动
         listView.setNestedScrollingEnabled(false);
         listView.setLayoutManager(new LinearLayoutManager(this));

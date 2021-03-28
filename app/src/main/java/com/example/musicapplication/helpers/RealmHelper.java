@@ -5,7 +5,9 @@ import android.util.Log;
 
 import com.blankj.utilcode.util.EncryptUtils;
 import com.example.musicapplication.R;
+import com.example.musicapplication.constants.Constant;
 import com.example.musicapplication.constants.RealmConstant;
+import com.example.musicapplication.models.AlbumModel;
 import com.example.musicapplication.models.MusicModel;
 import com.example.musicapplication.models.MusicSourceModel;
 import com.example.musicapplication.models.UserModel;
@@ -118,6 +120,8 @@ public class RealmHelper {
     public void removeMusicSource() {
         realm.beginTransaction();
         realm.delete(MusicSourceModel.class);
+        realm.delete(AlbumModel.class);
+        realm.delete(MusicModel.class);
         realm.commitTransaction();
     }
 
@@ -126,6 +130,14 @@ public class RealmHelper {
         return query.findFirst();
     }
 
+    public AlbumModel getAlbumById(Long albumId) {
+        RealmQuery<AlbumModel> query = realm.where(AlbumModel.class).equalTo(Constant.ALBUM_ID, albumId);
+        return query.findFirst();
+    }
+    public MusicModel getMusicById(Long musicId) {
+        RealmQuery<MusicModel> query = realm.where(MusicModel.class).equalTo(Constant.MUSIC_ID, musicId);
+        return query.findFirst();
+    }
     public void close() {
         if (realm != null && !realm.isClosed()) {
             realm.close();

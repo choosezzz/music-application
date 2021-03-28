@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.musicapplication.R;
 import com.example.musicapplication.activities.PlayMusicActivity;
+import com.example.musicapplication.constants.Constant;
+import com.example.musicapplication.models.MusicModel;
+
+import java.util.List;
 
 /**
  * @author choosezzz
@@ -22,8 +27,8 @@ import com.example.musicapplication.activities.PlayMusicActivity;
 public class MusicListAdapter extends RecyclerView.Adapter<MusicListAdapter.ViewHolder> {
 
     private Context context;
-    private int line;
     private RecyclerView recyclerView;
+    private List<MusicModel> musicModelList;
 
     /**
      * 设置过RecyclerView的高度标识
@@ -34,10 +39,10 @@ public class MusicListAdapter extends RecyclerView.Adapter<MusicListAdapter.View
      */
     private View itemView;
 
-    public MusicListAdapter(Context context, int line, RecyclerView recyclerView) {
+    public MusicListAdapter(Context context, RecyclerView recyclerView, List<MusicModel> musicModelList) {
         this.context = context;
-        this.line = line;
         this.recyclerView = recyclerView;
+        this.musicModelList = musicModelList;
     }
 
     @NonNull
@@ -49,19 +54,24 @@ public class MusicListAdapter extends RecyclerView.Adapter<MusicListAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
+        MusicModel musicModel = musicModelList.get(position);
         setRecyclerViewHeight();
-        Glide.with(context).load("https://t7.baidu.com/it/u=2621658848,3952322712&fm=193&f=GIF")
-                .into(holder.imageView);
+        Glide.with(context).load(musicModel.getPoster())
+                .into(holder.ivSongIcon);
+        holder.tvArtist.setText(musicModel.getArtist());
+        holder.tvSongName.setText(musicModel.getName());
         //音乐列表点击事件
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, PlayMusicActivity.class);
+            intent.putExtra(Constant.MUSIC_ID, musicModel.getMusicId());
             context.startActivity(intent);
         });
     }
 
     @Override
     public int getItemCount() {
-        return line;
+        return musicModelList.size();
     }
 
     /**
@@ -89,10 +99,18 @@ public class MusicListAdapter extends RecyclerView.Adapter<MusicListAdapter.View
     class ViewHolder extends RecyclerView.ViewHolder{
 
         //列表页缩略图
-        private ImageView imageView;
+        ImageView ivSongIcon;
+        ImageView ivPlayBtn;
+        TextView tvArtist;
+        TextView tvSongName;
+
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.music_list_icon);
+            ivSongIcon = itemView.findViewById(R.id.music_list_icon);
+            ivPlayBtn = itemView.findViewById(R.id.iv_play_btn);
+            tvArtist = itemView.findViewById(R.id.tv_artiest);
+            tvSongName = itemView.findViewById(R.id.tv_song_name);
         }
     }
 }

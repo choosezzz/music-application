@@ -45,12 +45,15 @@
             android:textColor="@color/title_color"
             android:textStyle="bold"
             android:textSize="@dimen/title_size"
+            android:id="@+id/tv_song_name"
             android:layout_gravity="center_horizontal"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_size"
             android:text="歌手"
+            android:id="@+id/tv_artiest"
             android:textColor="@color/info_color"
             android:textStyle="bold"
             android:textSize="@dimen/info_size"

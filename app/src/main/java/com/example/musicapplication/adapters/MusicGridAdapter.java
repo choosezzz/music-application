@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.musicapplication.R;
 import com.example.musicapplication.activities.AlbumListActivity;
+import com.example.musicapplication.constants.Constant;
 import com.example.musicapplication.models.AlbumModel;
 
 import java.util.List;
@@ -47,6 +48,7 @@ public class MusicGridAdapter extends RecyclerView.Adapter<MusicGridAdapter.MyVi
         holder.tvPlayNum.setText(albumModel.getPlayNum());
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, AlbumListActivity.class);
+            intent.putExtra(Constant.ALBUM_ID, albumModel.getAlbumId());
             context.startActivity(intent);
         });
     }

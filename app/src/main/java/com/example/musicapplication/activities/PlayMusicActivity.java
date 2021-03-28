@@ -4,10 +4,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.musicapplication.R;
+import com.example.musicapplication.constants.Constant;
+import com.example.musicapplication.helpers.RealmHelper;
+import com.example.musicapplication.models.MusicModel;
 import com.example.musicapplication.views.PlayMusicView;
 
 import jp.wasabeef.glide.transformations.BlurTransformation;
@@ -19,30 +23,58 @@ public class PlayMusicActivity extends BaseActivity {
      */
     private ImageView bgImage;
     private PlayMusicView playMusicView;
+    /**
+     * 数据源
+     */
+    private Long musicId;
+    private MusicModel musicModel;
+    private RealmHelper realmHelper;
+
+    private TextView tvArtist;
+    private TextView tvSongName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        musicId = getIntent().getLongExtra(Constant.MUSIC_ID, 0);
         setContentView(R.layout.activity_play_music);
 
+        initData();
         initView();
     }
 
+    private void initData() {
+        realmHelper = RealmHelper.getRealmHelper();
+        musicModel = realmHelper.getMusicById(musicId);
+    }
     private void initView() {
         //隐藏status bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         bgImage = fd(R.id.play_bg);
-        Glide.with(this).load("https://t7.baidu.com/it/u=3203007717,1062852813&fm=193&f=GIF")
+        Glide.with(this).load(musicModel.getPoster())
                 //高斯模糊
                 .apply(RequestOptions.bitmapTransform(new BlurTransformation(20, 10)))
                 .into(bgImage);
         playMusicView = fd(R.id.play_music_view);
-        playMusicView.setPlayIcon("https://t7.baidu.com/it/u=3203007717,1062852813&fm=193&f=GIF");
-        playMusicView.playMusic("http://music.163.com/song/media/outer/url?id=1338695683.mp3");
+        tvArtist = fd(R.id.tv_artiest);
+        tvSongName = fd(R.id.tv_song_name);
+
+        tvSongName.setText(musicModel.getName());
+        tvArtist.setText(musicModel.getArtist());
+        playMusicView.setPlayIcon(musicModel.getPoster());
+        playMusicView.playMusic(musicModel.getPath());
     }
 
     public void onBackClick(View view) {
         onBackPressed();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (realmHelper != null) {
+            realmHelper.close();
+        }
     }
 }

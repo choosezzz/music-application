@@ -20,4 +20,5 @@
     <dimen name="circle_border">2dp</dimen>
     <dimen name="needle_left_size">43dp</dimen>
     <dimen name="play_grid_info_size">20sp</dimen>
+    <dimen name="play_list_info_size">20sp</dimen>
 </resources>
