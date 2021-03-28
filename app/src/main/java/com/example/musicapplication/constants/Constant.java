@@ -27,4 +27,5 @@ public interface Constant {
 
     String USER_PREFERENCE_TAG = "user_preference";
     String LOGIN_PREFERENCE_KEY = "login_user";
+    String MUSIC_SOURCE_FILE = "music_source.json";
 }

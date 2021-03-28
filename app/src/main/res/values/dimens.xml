@@ -11,7 +11,7 @@
     <dimen name="info_size">14sp</dimen>
     <dimen name="radius">5dp</dimen>
     <dimen name="tab_margin_size">4dp</dimen>
-    <dimen name="album_margin_size">4dp</dimen>
+    <dimen name="album_margin_size">2dp</dimen>
     <dimen name="play_num_img_size">18dp</dimen>
     <dimen name="music_list_img_size">56dp</dimen>
     <dimen name="music_play_img_size">36dp</dimen>
@@ -19,4 +19,5 @@
     <dimen name="play_circle_size">204dp</dimen>
     <dimen name="circle_border">2dp</dimen>
     <dimen name="needle_left_size">43dp</dimen>
+    <dimen name="play_grid_info_size">20sp</dimen>
 </resources>

@@ -40,6 +40,8 @@ public class UserUtil {
             return false;
         }
         saveUserPreferenceInfo(context, phone);
+        instance.setMusicSource(DataUtil.readFileFromAsset(context, Constant.MUSIC_SOURCE_FILE));
+        instance.close();
         return true;
     }
 
@@ -56,6 +58,9 @@ public class UserUtil {
         context.startActivity(intent);
         ((Activity) context).overridePendingTransition(R.anim.open_enter, R.anim.open_exit);
         deleteUserPreferenceInfo(context);
+        RealmHelper realmHelper = RealmHelper.getRealmHelper();
+        realmHelper.removeMusicSource();
+        realmHelper.close();
     }
 
     public static boolean changePassword(Context context, String oldPwd, String newPwd, String confirmPwd) {

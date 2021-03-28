@@ -30,9 +30,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="100w"
-                android:textSize="@dimen/title_size"
-                android:textColor="@color/black"
+                android:text="0"
+                android:id="@+id/tv_play_num"
+                android:textSize="@dimen/play_grid_info_size"
+                android:textColor="@color/info_color"
                 android:layout_marginLeft="@dimen/album_margin_size"/>
         </LinearLayout>
     </FrameLayout>
@@ -40,8 +41,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="歌单名称"
+        android:id="@+id/tv_album_name"
         android:textStyle="bold"
         android:textColor="@color/black"
-        android:textSize="@dimen/title_size"
+        android:textSize="@dimen/play_grid_info_size"
         android:padding="@dimen/album_margin_size"/>
 </LinearLayout>

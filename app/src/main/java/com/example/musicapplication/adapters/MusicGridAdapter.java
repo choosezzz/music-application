@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,6 +14,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.musicapplication.R;
 import com.example.musicapplication.activities.AlbumListActivity;
+import com.example.musicapplication.models.AlbumModel;
+
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,7 +30,7 @@ import lombok.Getter;
 public class MusicGridAdapter extends RecyclerView.Adapter<MusicGridAdapter.MyViewHolder> {
 
     private Context context;
-    private int itemCount;
+    private List<AlbumModel> albumModelList;
 
     @NonNull
     @Override
@@ -37,7 +41,10 @@ public class MusicGridAdapter extends RecyclerView.Adapter<MusicGridAdapter.MyVi
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-        Glide.with(context).load("https://t7.baidu.com/it/u=3713375227,571533122&fm=193&f=GIF").into(holder.imageView);
+        AlbumModel albumModel = albumModelList.get(position);
+        Glide.with(context).load(albumModel.getPoster()).into(holder.imageView);
+        holder.tvAlbumName.setText(albumModel.getName());
+        holder.tvPlayNum.setText(albumModel.getPlayNum());
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, AlbumListActivity.class);
             context.startActivity(intent);
@@ -46,16 +53,21 @@ public class MusicGridAdapter extends RecyclerView.Adapter<MusicGridAdapter.MyVi
 
     @Override
     public int getItemCount() {
-        return itemCount;
+        return albumModelList.size();
     }
 
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imageView;
+        TextView tvPlayNum;
+        TextView tvAlbumName;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.grid_icon);
+            tvPlayNum = itemView.findViewById(R.id.tv_play_num);
+            tvAlbumName = itemView.findViewById(R.id.tv_album_name);
         }
     }
 

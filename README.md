@@ -37,5 +37,6 @@
 4. 必须在startActivity调用之后使用
 
 ### android 9.0以上播放失败
+原因：API级别28或更高级别手机，在http请求时（非Https请求）会有错误提示，并且请求不到数据。
 android:usesCleartextTraffic="true"
 

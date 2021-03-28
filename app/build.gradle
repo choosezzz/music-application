@@ -15,13 +15,6 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        //使lombok生效
-        javaCompileOptions {
-            annotationProcessorOptions {
-                includeCompileClasspath true
-            }
-        }
     }
 
     buildTypes {
@@ -56,4 +49,8 @@ dependencies {
     implementation 'jp.wasabeef:glide-transformations:4.3.0'
     //圆形图片
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+    implementation 'org.jsoup:jsoup:1.11.3'
+    implementation 'com.alibaba:fastjson:1.1.54.android'
+
 }
