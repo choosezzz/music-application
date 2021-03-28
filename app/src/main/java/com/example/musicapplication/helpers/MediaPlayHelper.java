@@ -47,7 +47,7 @@ public class MediaPlayHelper {
     public void setPath(String path) {
 
         //正在播放音乐
-        if (mediaPlayer.isPlaying()) {
+        if (mediaPlayer.isPlaying() || !path.equals(this.path)) {
             mediaPlayer.reset();
         }
         this.path = path;

@@ -79,7 +79,7 @@ public class InputView extends FrameLayout {
         }
         //获取自定义属性
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.InputView);
-        inputIcon = typedArray.getResourceId(R.styleable.InputView_input_icon, R.mipmap.ic_main);
+        inputIcon = typedArray.getResourceId(R.styleable.InputView_input_icon, R.mipmap.ic_main_800);
         inputHint = typedArray.getString(R.styleable.InputView_input_hint);
         isPassword = typedArray.getBoolean(R.styleable.InputView_is_password, false);
         //释放

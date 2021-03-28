@@ -11,12 +11,13 @@
         android:usesCleartextTraffic="true"
         android:name=".MyApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_main_350"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_main_200"
         android:supportsRtl="true"
         android:theme="@style/Theme.MusicApplication">
-        <activity android:name=".activities.PlayMusicActivity"></activity>
+        <activity android:name=".activities.PlayMusicActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
         <activity android:name=".activities.AlbumListActivity" />
         <activity android:name=".activities.ChangePasswordActivity" />
         <activity android:name=".activities.UserCenterActivity" />

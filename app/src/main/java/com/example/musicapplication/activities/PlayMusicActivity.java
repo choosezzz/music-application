@@ -1,5 +1,6 @@
 package com.example.musicapplication.activities;
 
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -48,9 +49,6 @@ public class PlayMusicActivity extends BaseActivity {
         musicModel = realmHelper.getMusicById(musicId);
     }
     private void initView() {
-        //隐藏status bar
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         bgImage = fd(R.id.play_bg);
         Glide.with(this).load(musicModel.getPoster())
                 //高斯模糊
@@ -69,7 +67,6 @@ public class PlayMusicActivity extends BaseActivity {
     public void onBackClick(View view) {
         onBackPressed();
     }
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
