@@ -141,7 +141,6 @@ public class PlayMusicView extends FrameLayout {
         flPlayMusic.startAnimation(playTurntableAnim);
         ivPlayNeedle.startAnimation(playNeedleAnim);
         ivPlay.setVisibility(View.GONE);
-
         startMusicService();
     }
 
@@ -153,7 +152,9 @@ public class PlayMusicView extends FrameLayout {
         flPlayMusic.clearAnimation();
         ivPlayNeedle.startAnimation(stopNeedleAnim);
         ivPlay.setVisibility(View.VISIBLE);
-        musicBinder.pauseMusic();
+        if (musicBinder != null) {
+            musicBinder.pauseMusic();
+        }
     }
 
     /**
@@ -173,12 +174,12 @@ public class PlayMusicView extends FrameLayout {
         //启动service
         if (musicServiceIntent == null) {
             musicServiceIntent = new Intent(context, MusicService.class);
-            context.startService(musicServiceIntent);
+        }else {
+            musicBinder.playMusic();
         }
         //绑定service
         if (!isBindService) {
-            isBindService = true;
-            context.bindService(musicServiceIntent, conn, Context.BIND_AUTO_CREATE);
+            isBindService = context.bindService(musicServiceIntent, conn, Context.BIND_AUTO_CREATE);
         }
     }
 
