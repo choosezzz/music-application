@@ -35,6 +35,7 @@ public class MediaPlayHelper {
         }
         return instance;
     }
+
     private MediaPlayHelper(Context context) {
         this.context = context;
         mediaPlayer = new MediaPlayer();
@@ -42,6 +43,7 @@ public class MediaPlayHelper {
 
     /**
      * 设置数据源
+     *
      * @param path
      */
     public void setPath(String path) {
@@ -57,12 +59,22 @@ public class MediaPlayHelper {
             //异步加载音乐
             mediaPlayer.prepareAsync();
 
+            //数据准备完成之后的操作
             mediaPlayer.setOnPreparedListener(mediaPlayer -> {
-                if (mediaPlayerListener != null) {
-                    mediaPlayerListener.onPrepared(mediaPlayer);
+
+                if (mediaPlayerListener == null) {
+                    throw new RuntimeException("OnMediaPlayerListener must be not null.");
                 }
+                mediaPlayerListener.onPrepared(mediaPlayer);
             });
 
+            //播放完成之后的操作
+            mediaPlayer.setOnCompletionListener(mp -> {
+                if (mediaPlayerListener == null) {
+                    throw new RuntimeException("OnMediaPlayerListener must be not null.");
+                }
+                mediaPlayerListener.onCompletion(mp);
+            });
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -84,7 +96,10 @@ public class MediaPlayHelper {
     public void pause() {
         mediaPlayer.pause();
     }
+
     public interface OnMediaPlayerListener {
         void onPrepared(MediaPlayer mp);
+
+        void onCompletion(MediaPlayer mp);
     }
 }

@@ -1,9 +1,7 @@
 package com.example.musicapplication.activities;
 
-import android.app.ActionBar;
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -60,8 +58,8 @@ public class PlayMusicActivity extends BaseActivity {
 
         tvSongName.setText(musicModel.getName());
         tvArtist.setText(musicModel.getArtist());
-        playMusicView.setPlayIcon(musicModel.getPoster());
-        playMusicView.playMusic(musicModel.getPath());
+        playMusicView.setMusic(musicModel);
+        playMusicView.playMusic();
     }
 
     public void onBackClick(View view) {
@@ -73,5 +71,7 @@ public class PlayMusicActivity extends BaseActivity {
         if (realmHelper != null) {
             realmHelper.close();
         }
+        //解绑MusicService
+        playMusicView.unbindService();
     }
 }

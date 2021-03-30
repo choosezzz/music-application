@@ -1,6 +1,10 @@
 package com.example.musicapplication.views;
 
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +18,8 @@ import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
 import com.example.musicapplication.R;
-import com.example.musicapplication.helpers.MediaPlayHelper;
+import com.example.musicapplication.models.MusicModel;
+import com.example.musicapplication.services.MusicService;
 
 /**
  * @author choosezzz
@@ -57,11 +62,13 @@ public class PlayMusicView extends FrameLayout {
     private Animation stopNeedleAnim;
 
     private boolean isPlaying;
-    private MediaPlayHelper mediaPlayHelper;
-    /**
-     * 音乐地址
-     */
-    String musicPath;
+
+    private Intent musicServiceIntent;
+    private boolean isBindService;
+    private MusicService.MusicBinder musicBinder;
+    private MusicModel musicModel;
+
+    private ServiceConnection conn;
 
     public PlayMusicView(@NonNull Context context) {
         super(context);
@@ -97,36 +104,45 @@ public class PlayMusicView extends FrameLayout {
         playTurntableAnim = AnimationUtils.loadAnimation(context, R.anim.play_turntable_anim);
         playNeedleAnim = AnimationUtils.loadAnimation(context, R.anim.play_needle_anim);
         stopNeedleAnim = AnimationUtils.loadAnimation(context, R.anim.stop_needle_anim);
-
         addView(playView);
-        mediaPlayHelper = MediaPlayHelper.getInstance(context);
+
+        conn = new ServiceConnection() {
+            @Override
+            public void onServiceConnected(ComponentName name, IBinder service) {
+
+                musicBinder = (MusicService.MusicBinder) service;
+                musicBinder.setMusic(musicModel);
+                musicBinder.playMusic();
+            }
+
+            @Override
+            public void onServiceDisconnected(ComponentName name) {
+
+            }
+        };
 
     }
 
-    public void setPlayIcon(String src) {
-        Glide.with(context).load(src)
+    public void setPlayIcon() {
+        Glide.with(context).load(musicModel.getPoster())
                 .into(playIcon);
+    }
+
+    public void setMusic(MusicModel music) {
+        this.musicModel = music;
+        setPlayIcon();
     }
 
     /**
      * 播放音乐
      */
-    public void playMusic(String path) {
+    public void playMusic() {
         isPlaying = true;
-        musicPath = path;
         flPlayMusic.startAnimation(playTurntableAnim);
         ivPlayNeedle.startAnimation(playNeedleAnim);
         ivPlay.setVisibility(View.GONE);
 
-        String playPath = mediaPlayHelper.getPath();
-        if (path.equals(playPath)) {
-            mediaPlayHelper.start();
-            return;
-        }
-        mediaPlayHelper.setPath(path);
-        mediaPlayHelper.setMediaPlayerListener(v -> {
-            mediaPlayHelper.start();
-        });
+        startMusicService();
     }
 
     /**
@@ -137,7 +153,7 @@ public class PlayMusicView extends FrameLayout {
         flPlayMusic.clearAnimation();
         ivPlayNeedle.startAnimation(stopNeedleAnim);
         ivPlay.setVisibility(View.VISIBLE);
-        mediaPlayHelper.pause();
+        musicBinder.pauseMusic();
     }
 
     /**
@@ -147,9 +163,29 @@ public class PlayMusicView extends FrameLayout {
 
         if (isPlaying) {
             stopMusic();
-        }else {
-            playMusic(musicPath);
+        } else {
+            playMusic();
         }
     }
 
+    public void startMusicService() {
+
+        //启动service
+        if (musicServiceIntent == null) {
+            musicServiceIntent = new Intent(context, MusicService.class);
+            context.startService(musicServiceIntent);
+        }
+        //绑定service
+        if (!isBindService) {
+            isBindService = true;
+            context.bindService(musicServiceIntent, conn, Context.BIND_AUTO_CREATE);
+        }
+    }
+
+    public void unbindService() {
+        if (isBindService) {
+            isBindService = false;
+            context.unbindService(conn);
+        }
+    }
 }
